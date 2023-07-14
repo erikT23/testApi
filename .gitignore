@@ -1,0 +1,27 @@
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de dependencias y paquetes
+packages/
+*.nupkg
+
+# Archivos de configuración local
+appsettings.Development.json
+appsettings.Production.json
+
+# Archivos generados por el IDE
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Archivos de registros
+*.log
+
+# Archivos temporales
+*.tmp
+*.swp
+
+# Archivos de respaldo
+*~
