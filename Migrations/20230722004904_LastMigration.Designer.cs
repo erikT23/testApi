@@ -11,8 +11,8 @@ using TestApi9A;
 namespace TestApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230718015542_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230722004904_LastMigration")]
+    partial class LastMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,24 @@ namespace TestApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Author = "Javier Garduño",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Tkhaskhkhsk",
+                            Title = "Test"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Author = "María Rojo",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Testsss",
+                            Title = "Test"
+                        });
                 });
 #pragma warning restore 612, 618
         }

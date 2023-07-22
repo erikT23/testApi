@@ -38,5 +38,49 @@ namespace TestApi.Controllers
             return HttpStatusCode.Created;
         }
 
+        [HttpGet("Show")]
+        public async Task<IActionResult> Show(int id)
+        {
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment == null)
+            {
+                return NotFound();
+            }
+            return Ok(comment);
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update([FromBody] Comment comment)
+        {
+            if (comment == null)
+            {
+                return BadRequest(); //Error code 400
+            }
+            var entity = await _context.Comments.FindAsync(comment.Id);
+            if (entity == null)
+            {
+                return NotFound(); //Error code 404
+            }
+            entity.Title = comment.Title;
+            entity.Description = comment.Description;
+            entity.Author = comment.Author;
+            entity.CreatedAt = comment.CreatedAt;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpDelete("Destroy")]
+        public async Task<IActionResult> Destroy(int id)
+        {
+            var producto = await _context.Comments.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+            _context.Comments.Remove(producto);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
     }
 }

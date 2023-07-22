@@ -39,7 +39,7 @@ namespace TestApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Comentarios");
+                    b.ToTable("Comments");
 
                     b.HasData(
                         new

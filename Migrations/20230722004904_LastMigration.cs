@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace TestApi.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class LastMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,6 +36,15 @@ namespace TestApi.Migrations
                     table.PrimaryKey("PK_Comments", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Author", "CreatedAt", "Description", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Javier Garduño", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Tkhaskhkhsk", "Test" },
+                    { 2, "María Rojo", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Testsss", "Test" }
+                });
         }
 
         /// <inheritdoc />
