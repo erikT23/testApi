@@ -37,22 +37,23 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="input-group flex-nowrap">
-                                        <input id="a" type="text" class="form-control" placeholder="Title" aria-label="Username"
-                                            aria-describedby="addon-wrapping">
-                                
-                                        <input id="b" type="text" class="form-control" placeholder="Description" aria-label="Username"
-                                            aria-describedby="addon-wrapping">
-                                
-                                        <input id="c" type="text" class="form-control" placeholder="Author" aria-label="Username"
-                                            aria-describedby="addon-wrapping">
-                                
-                                        <input id="d" type="date" class="form-control" placeholder="Fecha" aria-label="Username"
-                                            aria-describedby="addon-wrapping">
+                                        <input id="a" type="text" class="form-control" placeholder="Title"
+                                            aria-label="Username" aria-describedby="addon-wrapping">
+
+                                        <input id="b" type="text" class="form-control" placeholder="Description"
+                                            aria-label="Username" aria-describedby="addon-wrapping">
+
+                                        <input id="c" type="text" class="form-control" placeholder="Author"
+                                            aria-label="Username" aria-describedby="addon-wrapping">
+
+                                        <input id="d" type="date" class="form-control" placeholder="Fecha"
+                                            aria-label="Username" aria-describedby="addon-wrapping">
                                     </div>
-                                    <a onclick="add(); return false;" class="btn btn-lg btn-light" href="javascript:void(0);" data-bs-dismiss="modal">Guardar</a>
+                                    <a onclick="add(); return false;" class="btn btn-lg btn-light"
+                                        href="javascript:void(0);" data-bs-dismiss="modal">Guardar</a>
                                 </div>
-                                
-                                
+
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
@@ -67,33 +68,112 @@
                     <br>
                     <a type="button" class="btn btn-warning" data-bs-toggle="modal"
                         data-bs-target="#exampleModal2">Busqueda por registro</a>
-                    <a class="btn btn-lg btn-light" href="#about">Start scrolling!</a>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Editar
+                        Registro</a>
+
+                    <!-- Enlace para abrir el modal de eliminación -->
+                    <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar
+                        Registro</a>
                 </div>
+
                 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Registro</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Búsqueda de Registro</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="input-group flex-nowrap">
-                                    <input id="idRegistro" type="text" class="form-control" placeholder="ID"
+                                    <input id="idBusqueda" type="text" class="form-control" placeholder="ID"
                                         aria-label="Username" aria-describedby="addon-wrapping">
-
-
                                 </div>
-                                <a onclick="searchId()" class="btn btn-lg btn-light" href="#about">Guardar</a>
+                                <a onclick="searchId(); return false;" class="btn btn-lg btn-light"
+                                    href="javascript:void(0);" data-bs-dismiss="modal">Buscar</a>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="deleteModalLabel">Eliminar Registro</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group flex-nowrap mb-3">
+                                    <input id="deleteId" type="text" class="form-control form-control-lg"
+                                        placeholder="ID" aria-label="ID" aria-describedby="addon-wrapping">
+                                </div>
+                                <p>¿Estás seguro de que deseas eliminar este registro?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button onclick="deleteRecord(); return false;" class="btn btn-danger"
+                                    data-bs-dismiss="modal">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="editModalLabel">Editar Registro</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group flex-nowrap mb-3">
+                                    <input id="editId" type="text" class="form-control form-control-lg" placeholder="ID"
+                                        aria-label="ID" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap mb-3">
+                                    <input id="editTitle" type="text" class="form-control form-control-lg"
+                                        placeholder="Title" aria-label="Title" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap mb-3">
+                                    <input id="editDescription" type="text" class="form-control form-control-lg"
+                                        placeholder="Description" aria-label="Description"
+                                        aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap mb-3">
+                                    <input id="editAuthor" type="text" class="form-control form-control-lg"
+                                        placeholder="Author" aria-label="Author" aria-describedby="addon-wrapping">
+                                </div>
+                                <div class="input-group flex-nowrap mb-3">
+                                    <input id="editDate" type="date" class="form-control form-control-lg"
+                                        aria-label="Date" aria-describedby="addon-wrapping">
+                                </div>
+                                <button onclick="updateRecord(); return false;" class="btn btn-lg btn-light"
+                                    data-bs-dismiss="modal">Guardar
+                                    Cambios</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
                 <div class="col-12">
                     <br>
                     <p>Titulo :<span id="ShowTitle"></span></p>
