@@ -142,14 +142,13 @@ function updateRecord() {
     const author = document.getElementById('editAuthor').value;
     const date = document.getElementById('editDate').value;
 
-    // Verificar si los campos están vacíos
     if (!id || !title || !description || !author || !date) {
         Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'Por favor, completa todos los campos antes de guardar los cambios.',
             confirmButtonText: 'Aceptar',
-            allowOutsideClick: () => Swal.isVisible() // Permite cerrar el modal haciendo clic fuera del mensaje
+            allowOutsideClick: () => Swal.isVisible() 
         });
         return;
     }
@@ -162,7 +161,6 @@ function updateRecord() {
         createdAt: date
     };
 
-    // Realizar la solicitud PUT
     fetch('http://localhost:5296/api/Comment/Update', {
         method: 'PUT',
         headers: {
@@ -174,10 +172,9 @@ function updateRecord() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json(); // Analizar la respuesta JSON solo si existe
+            return response.json(); 
         })
         .then(data => {
-            // Verificar si la respuesta JSON es válida antes de mostrar el mensaje
             if (data) {
                 Swal.fire({
                     icon: 'success',
@@ -186,15 +183,12 @@ function updateRecord() {
                     confirmButtonText: 'Aceptar'
                 });
 
-                // Actualizar la tabla de registros con los cambios
                 showAll();
 
-                // Cerrar el modal de edición
                 const editModal = document.getElementById('editModal');
                 const bootstrapEditModal = new bootstrap.Modal(editModal);
                 bootstrapEditModal.hide();
             } else {
-                // Mostrar mensaje de error si la respuesta JSON está vacía o incompleta
                 Swal.fire({
                     icon: 'error',
                     title: '¡Error!',
@@ -253,7 +247,6 @@ function deleteRecord() {
                     confirmButtonText: 'Aceptar'
                 });
 
-                // Actualizar la tabla de registros después de la eliminación
                 showAll();
             } else {
                 Swal.fire({
@@ -274,7 +267,6 @@ function deleteRecord() {
             });
         });
 
-    // Cerrar el modal y limpiar el campo de texto después de la eliminación o el error
     const deleteModal = document.getElementById('deleteModal');
     const bootstrapDeleteModal = new bootstrap.Modal(deleteModal);
     bootstrapDeleteModal.hide();
